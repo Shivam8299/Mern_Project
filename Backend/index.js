@@ -1,19 +1,33 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./config/db.js";
+import cors from 'cors'
+import connectCloudinary from "./config/cloudinary.js";
+import userRouter from "./routes/userRoute.js";
 
+//app config
+
+const port = process.env.PORT || 3000;
 dotenv.config();
 const aap = express();
+connectDb();
+connectCloudinary()
+
+//middlewares
+aap.use(cors())
 aap.use(express.json());
 
-//database calling
-connectDb();
+
+// api endpoint
+
+aap.use('/api/user',userRouter)
+
 
 aap.get("/", (req, res) => {
-  res.send("server is running on port 3000");
+  res.send("Welcome to home page");
 });
 
-const port = process.env.PORT || 4000;
+
 
 aap.listen(port, (error) => {
   if (error) {
