@@ -4,6 +4,7 @@ import connectDb from "./config/db.js";
 import cors from 'cors'
 import connectCloudinary from "./config/cloudinary.js";
 import userRouter from "./routes/userRoute.js";
+import productRouter from "./routes/productRoute.js";
 
 //app config
 
@@ -21,6 +22,7 @@ aap.use(express.json());
 // api endpoint
 
 aap.use('/api/user',userRouter)
+aap.use('/api/product',productRouter)
 
 
 aap.get("/", (req, res) => {
