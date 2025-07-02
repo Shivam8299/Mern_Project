@@ -51,7 +51,7 @@ const addProduct = async (req, res) => {
       message: "product data added successfully",
     });
 
-    console.log(productData);
+    // console.log(productData);
     // console.log(name, description, category, subCategory, bestSeller, sizes, price);
     // console.log(image1)
     // console.log(image2)
@@ -73,7 +73,9 @@ const addProduct = async (req, res) => {
 const allProducts = async (req, res) => {
   try {
     const product = await productModel.find({});
+
     // console.log(product);
+
     res.json({
       success: true,
       product,
