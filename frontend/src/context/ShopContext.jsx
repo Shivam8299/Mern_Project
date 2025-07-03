@@ -1,37 +1,42 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-  const baseUrl = 'http://localhost:3000'; // Fixed typo: added colon after http
+  const baseUrl = 'http://localhost:3000';
+  const [productData, setProductData] = useState([]);
 
-  // Function to get all product data
-  const ProductData = async () => {
-    try {
-      const response = await axios.get(`${baseUrl}/api/product/all`);
-      return response.data; // axios already returns parsed JSON
-    } catch (error) {
-      console.error("Error fetching product data:", error);
-      return [];
-    }
-  };
-
+  // data will be fetch once when component render
   useEffect(() => {
-    ProductData().then(data => console.log(data)); // Proper async usage inside useEffect
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/api/product/all`);
+        if (response.data.success) {
+
+          setProductData(response.data.product); 
+        } else {
+          console.error("Failed to fetch product data");
+        }
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  let currency = "$";
+  const currency = "$";
   const deliveryFee = 10;
 
   const value = {
-    ProductData,
+    productData,  
     currency,
     deliveryFee,
   };
 
   return (
-    <ShopContext.Provider value={value}> {/* Added missing value prop */}
+    <ShopContext.Provider value={value}>
       {props.children}
     </ShopContext.Provider>
   );
