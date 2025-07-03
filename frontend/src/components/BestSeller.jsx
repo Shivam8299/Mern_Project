@@ -9,7 +9,7 @@ function BestSeller() {
     useEffect(()=>{
         const bestSeller = productData.filter(itemd=>itemd.bestSeller)
         setBestSeller(bestSeller.slice(0,5))
-    })
+    },[])
   return ( 
     <div className='my-10'>
       <div className='text-3xl text-center py-8'>
