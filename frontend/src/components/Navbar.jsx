@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 
 function Navbar() {
+  const navigate = useNavigate()
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       {/* <img className="h-8 rounded w-20" src="Trendyfy_logo.webp" alt="Logo" /> */}
 
-      <h1 className="text-xl font-semi-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">
+      <button onClick={()=>navigate("/")}  className="text-xl cursor-pointer font-semi-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">
         TRENDYFY.
-      </h1>
+      </button>
       <ul className="hidden md:flex gap-5 text-sm text-gray-700">
         <li>
           <NavLink to="/" className="flex flex-col items-center gap-1">
