@@ -8,6 +8,11 @@ const ShopContextProvider = (props) => {
   const [productData, setProductData] = useState([]);
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const [cartItems,setCartItems] =useState({})
+
+  const addToCart = async ()=>{
+    
+  }
 
   // data will be fetch once when component render
 

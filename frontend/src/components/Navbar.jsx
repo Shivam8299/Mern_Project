@@ -44,7 +44,7 @@ function Navbar() {
         </li>
       </ul>
       <div className="flex items-center gap-6">
-        <img
+        <img 
           onClick={()=>setShowSearch(true)}
           className="w-5 cursor-pointer"
           src={assets.search_icon}
