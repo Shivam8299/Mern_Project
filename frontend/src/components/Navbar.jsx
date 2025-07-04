@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { ShopContext } from "../context/ShopContext";
 
 function Navbar() {
   const navigate = useNavigate()
   const [showMenu, setShowMenu] = useState(false);
+  const {setShowSearch} = useContext(ShopContext)
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       {/* <img className="h-8 rounded w-20" src="Trendyfy_logo.webp" alt="Logo" /> */}
@@ -43,6 +45,7 @@ function Navbar() {
       </ul>
       <div className="flex items-center gap-6">
         <img
+          onClick={()=>setShowSearch(true)}
           className="w-5 cursor-pointer"
           src={assets.search_icon}
           alt="Search_icon"

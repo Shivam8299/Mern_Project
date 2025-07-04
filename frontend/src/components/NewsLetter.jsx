@@ -5,7 +5,7 @@ function NewsLetter() {
         event.preventDefault()
     }
   return (
-    <div className='text-center mt-10 '>
+    <div className='text-center mt-24 '>
         <p className='text-2xl font-medium text-gray-800'>Subcribe now & get 20% off</p>
         <p className='text-gray-400 mt-3'>
             Lorem ipsum, nam quia! Ad sed alias perferendis quidem illum, voluptate repellat placeat.
