@@ -6,7 +6,7 @@ import { ShopContext } from "../context/ShopContext";
 function Navbar() {
   const navigate = useNavigate()
   const [showMenu, setShowMenu] = useState(false);
-  const {setShowSearch} = useContext(ShopContext)
+  const {setShowSearch, getCartCount} = useContext(ShopContext)
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       {/* <img className="h-8 rounded w-20" src="Trendyfy_logo.webp" alt="Logo" /> */}
@@ -68,7 +68,7 @@ function Navbar() {
         <Link to="/cart" className="relative">
           <img className="w-5 min-w-5" src={assets.cart_icon} alt="cart_icon" />
           <button className="absolute right-[-5px] bottom-[-5px] w-4 text-center text-xs leading-4 bg-black  text-white aspect-square rounded-full ">
-            10
+            {getCartCount()}
           </button>
         </Link>
         <img
