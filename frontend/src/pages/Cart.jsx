@@ -2,11 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useState } from "react";
 import Title from "../components/Title"
+import {assets} from "../assets/assets"
+import CartTotal from "../components/CartTotal";
 
 function Cart() {
-  const { productData, currency, cartItems } = useContext(ShopContext);
+  const { productData, currency, cartItems,updateCartCount,navigate } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
-
+// console.log(cartItems)
   useEffect(() => {
     const tempData = [];
     for (const items in cartItems) {
@@ -31,14 +33,34 @@ function Cart() {
     <div>
       {cartData.map((item,index)=>{
         const product = productData.find(product => product._id === item._id)
+        
         return (
-          <div key={index} className="py-4 border-t border-b text-gray-700 grid grid-cols-[1fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr items-center] gap-4">
-            <div className="flex items-center  ">
-
+          <div key={index} className="py-4 border-t border-b text-gray-700 grid grid-cols-[1fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4">
+            <div className="flex items-start gap-6">
+              <img className="w-16 sm:w-20" src={product.images[0]} alt="" />
+              <div>
+                <p className="text-sm font-medium sm:text-lg">{product.name}</p>
+                <div className="flex items-center gap-5 mt-2">
+                  <p>{currency}{product.price}</p>
+                  <p className="px-2 sm:px-3 sm:py-1 border bg-slate-50">{item.size}</p>
+                </div>
+              </div>
             </div>
+            <input 
+            onChange={(e)=>e.target.value === " " || e.target.value === 0 ? null : updateCartCount(item._id, item.size, Number(e.target.value))} 
+            className="max-w-10 border outline-none sm:max-w-20 px-1 sm:px-2 py-1 " min={1} type="number" defaultValue={item.quantity} />
+            <img onClick={()=>updateCartCount(item._id, item.size,0)} className="w-4 mr-4 sm:w-5 cursor-pointer" src={assets.bin_icon} alt="" />
           </div>
         )
       })}
+    </div>
+    <div className="flex justify-end my-20 ">
+      <div className="w-full sm:w-[450px]">
+        <CartTotal/>
+        <div className='text-end w-full '>
+        <button onClick={()=>navigate('/place-order')} className=' bg-black text-white text-sm px-8 py-3 my-8 cursor-pointer active:bg-gray-700'>PROCEED TO CHECKOUT</button>
+      </div>
+      </div>
     </div>
   </div>
   )

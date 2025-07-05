@@ -68,7 +68,7 @@ function Product() {
                 <button
                   onClick={() => setSize(data)}
                   key={index}
-                  className={`border py-2 px-4 bg-gray-100 ${
+                  className={`border cursor-pointer py-2 px-4 bg-gray-100 ${
                     data === size ? "border-orange-500" : ""
                   }`}
                 >
