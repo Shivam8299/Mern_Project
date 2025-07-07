@@ -25,7 +25,7 @@ function Cart() {
     // console.log(tempData)
     setCartData(tempData)
   },[cartItems]);
-  return (
+  return cartData.length > 0 ? (
   <div className="border-t pt-14 ">
     <div className="text-2xl mb-3 ">
       <Title text1={'YOUR'} text2={'CART'}/>
@@ -63,7 +63,24 @@ function Cart() {
       </div>
     </div>
   </div>
-  )
+  ) : 
+  <div className="flex flex-col items-center justify-center px-6 py-10 max-w-xl mx-auto text-center">
+  <img 
+    className="w-40 md:w-32 mb-6"
+    src="https://img.freepik.com/free-vector/shopping-cart-icon-isolated-illustration_18591-82226.jpg?semt=ais_hybrid&w=740" 
+    alt="Cart image" 
+  />
+  <b className="text-2xl font-semibold text-gray-800">Your cart is empty</b>
+  <p className="mt-3 text-gray-500 text-base font-medium">
+    Just relax, let us help you find some first-class products.
+  </p>
+  <button 
+  onClick={()=>navigate('/collection')}
+  className="mt-6 px-8 py-2 bg-black text-white text-sm md:text-base font-semibold hover:bg-gray-800 active:bg-gray-600 transition duration-200 cursor-pointer">
+    Start Shopping
+  </button>
+</div>
+
 }
 
 export default Cart;
