@@ -34,12 +34,6 @@ function App() {
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/admin" element={<Admin/>} />
-        <Route path="/add" element={<Add/>} />
-        <Route path="/list" element={<List/>} />
-        <Route path="/orders/admin" element={<OrderAdmin/>} />
-
-        
-        
       </Routes>
       <Footer/>
     </div>
