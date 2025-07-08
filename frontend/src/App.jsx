@@ -13,7 +13,10 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import { ToastContainer, toast } from 'react-toastify';
-import Admin from "./admin/admin";
+import Admin from "./admin/Admin";
+import Add from "./admin/Add";
+import List from "./admin/List";
+import OrderAdmin from "./admin/OrderAdmin";
 function App() {
   return (
     <div className="px-4 sm:px-[5vh] md:px-[7vh] lg:px-[9vh]">
@@ -31,6 +34,11 @@ function App() {
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/admin" element={<Admin/>} />
+        <Route path="/add" element={<Add/>} />
+        <Route path="/list" element={<List/>} />
+        <Route path="/orders/admin" element={<OrderAdmin/>} />
+
+        
         
       </Routes>
       <Footer/>
