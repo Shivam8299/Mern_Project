@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-  const baseUrl = "http://localhost:3000";
+  const baseUrl = "https://mern-project-1-ulih.onrender.com";
   const navigate = useNavigate()
   const [productData, setProductData] = useState([]);
   const [search, setSearch] = useState("");
